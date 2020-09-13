@@ -1,4 +1,4 @@
-FROM node:10
+FROM node:10.22.0-alpine3.9
 COPY ["package.json","package-lock.json","/usr/src/"]
 WORKDIR /usr/src
 RUN npm install
