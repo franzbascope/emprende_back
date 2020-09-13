@@ -61,7 +61,7 @@ jobs:
           # be deployed to ECS.
           docker-compose build
           echo "IMAGE PUSHED"
-#          docker tag back-end_app:latest 240431047950.dkr.ecr.us-east-2.amazonaws.com/back-end_app:latest
+          docker tag back-end_app:latest 240431047950.dkr.ecr.us-east-2.amazonaws.com/back-end_app:latest
 #          docker push 240431047950.dkr.ecr.us-east-2.amazonaws.com/back-end_app:latest
     
 
