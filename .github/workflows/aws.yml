@@ -60,9 +60,10 @@ jobs:
           # push it to ECR so that it can
           # be deployed to ECS.
           docker-compose build
-          docker tag back-end_app:latest 240431047950.dkr.ecr.us-east-2.amazonaws.com/back-end_app:latest
-          docker push 240431047950.dkr.ecr.us-east-2.amazonaws.com/back-end_app:latest
           echo "IMAGE PUSHED"
+#          docker tag back-end_app:latest 240431047950.dkr.ecr.us-east-2.amazonaws.com/back-end_app:latest
+#          docker push 240431047950.dkr.ecr.us-east-2.amazonaws.com/back-end_app:latest
+    
 
 #       - name: Fill in the new image ID in the Amazon ECS task definition
 #         id: task-def
