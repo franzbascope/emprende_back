@@ -49,33 +49,33 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
-      - name: Build, tag, and push image to Amazon ECR
-        id: build-image
-        env:
-          ECR_REGISTRY: 240431047950.dkr.ecr.us-east-2.amazonaws.com/dev_emprende:latest
-          ECR_REPOSITORY: dev_emprende
-          IMAGE_TAG: latest
-        run: |
-          # Build a docker container and
-          # push it to ECR so that it can
-          # be deployed to ECS.
-          docker-compose build
-          docker tag back-end_app:latest 240431047950.dkr.ecr.us-east-2.amazonaws.com/back-end_app:latest
-          docker push 240431047950.dkr.ecr.us-east-2.amazonaws.com/back-end_app:latest
-          echo "IMAGE PUSHED"
+#       - name: Build, tag, and push image to Amazon ECR
+#         id: build-image
+#         env:
+#           ECR_REGISTRY: 240431047950.dkr.ecr.us-east-2.amazonaws.com/dev_emprende:latest
+#           ECR_REPOSITORY: dev_emprende
+#           IMAGE_TAG: latest
+#         run: |
+#           # Build a docker container and
+#           # push it to ECR so that it can
+#           # be deployed to ECS.
+#           docker-compose build
+#           docker tag back-end_app:latest 240431047950.dkr.ecr.us-east-2.amazonaws.com/back-end_app:latest
+#           docker push 240431047950.dkr.ecr.us-east-2.amazonaws.com/back-end_app:latest
+#           echo "IMAGE PUSHED"
 
-      - name: Fill in the new image ID in the Amazon ECS task definition
-        id: task-def
-        uses: aws-actions/amazon-ecs-render-task-definition@v1
-        with:
-          task-definition: task-definition.json
-          container-name: dev_emprende
-          image: dev_emprende
+#       - name: Fill in the new image ID in the Amazon ECS task definition
+#         id: task-def
+#         uses: aws-actions/amazon-ecs-render-task-definition@v1
+#         with:
+#           task-definition: task-definition.json
+#           container-name: dev_emprende
+#           image: dev_emprende
 
-      - name: Deploy Amazon ECS task definition
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-        with:
-          task-definition: ${{ steps.task-def.outputs.task-definition }}
-          service: sample-app-service
-          cluster: default
-          wait-for-service-stability: true
+#       - name: Deploy Amazon ECS task definition
+#         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+#         with:
+#           task-definition: ${{ steps.task-def.outputs.task-definition }}
+#           service: sample-app-service
+#           cluster: default
+#           wait-for-service-stability: true
